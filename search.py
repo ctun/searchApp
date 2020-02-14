@@ -5,6 +5,9 @@ circum = 40075160    # circumference at the equator
 circum = 40075017
 pi = 3.14159
 
+north_south_circum = 40008000
+north_south_circum = 39940653.0
+
 class Location:
    def __init__(self,grp, hood, x,y):
        self.neighborhood_grp = grp
@@ -22,7 +25,7 @@ def getXYpos(p0, p):
     deltaLongitude = p.long - p0.long
     latitudeCircumference = circum * cos(asRadians(p0.lat))
     resultX = deltaLongitude * latitudeCircumference / 360
-    resultY = deltaLatitude * 40008000.0 / 360.0
+    resultY = deltaLatitude * north_south_circum / 360.0
     return resultX, resultY
 
 def inRadius(p, locations,r):
@@ -37,7 +40,7 @@ def inRadius(p, locations,r):
     return found
 
 def getLatLong(lat, dx,dy):
-    dlat = dy * 360.0 / 40008000.0
+    dlat = dy * 360.0 / north_south_circum 
     latitudeCircumference = circum * cos( (pi / 180.0) * lat )
     dlong = dx * 360.0 / latitudeCircumference
     return dlat,dlong
