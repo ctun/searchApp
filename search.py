@@ -15,12 +15,12 @@ class Location:
 def asRadians(degrees):
     return degrees * pi / 180
 
-def getXYpos(relativeNullPoint, p):
+def getXYpos(p0, p):
     """ Calculates X and Y distances in meters.
     """
-    deltaLatitude = p.lat - relativeNullPoint.lat
-    deltaLongitude = p.long - relativeNullPoint.long
-    latitudeCircumference = circum * cos(asRadians(relativeNullPoint.lat))
+    deltaLatitude = p.lat - p0.lat
+    deltaLongitude = p.long - p0.long
+    latitudeCircumference = circum * cos(asRadians(p0.lat))
     resultX = deltaLongitude * latitudeCircumference / 360
     resultY = deltaLatitude * 40008000.0 / 360.0
     return resultX, resultY
@@ -65,6 +65,9 @@ def findLoc(p,r):
                     'latitude': loc[1], 'longitude':loc[2], 
                     'neighbourhood_group':loc[3], 'neighbourhood':loc[4]
                   }]
+    if conn:
+       conn.close()
+
     return result
 
 if __name__ == "__main__":
