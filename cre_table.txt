@@ -1,0 +1,18 @@
+create TABLE ab_nyc (
+id                                int,
+name                              varchar(40),
+host_id                           int,
+host_name                         varchar(40),
+neighbourhood_group               varchar(30),
+neighbourhood                     varchar(20),
+latitude                          real,
+longitude                         real,
+room_type                         varchar(30),
+price                             int,
+minimum_nights                    int,
+number_of_reviews                 int,
+last_review                       char(15),
+reviews_per_month                 float,
+calculated_host_listings_count    int,
+availability_365                  int
+);
