@@ -1,6 +1,7 @@
 # searchApp
 
 Feb 13, 2020
+
 given lat,long, searches the location within a given radius (meters)
 
 It talks to Postgres database running on localhost set in function FindLoc in search.py
@@ -10,10 +11,14 @@ schema is in cre_table.txt
 
 json format to send to flask server:
 
-echo $jstr500
+$ echo $jstr500
 {"latitude": "40.7306", "longitude": "-73.9352", "distance": "500", "query": "two bedroom"}
 
-curl -H  "Content-Type: application/json"  --data  "$jstr500"  http://localhost:5000/search
+$curl -H  "Content-Type: application/json"  --data  "$jstr500"  http://localhost:5000/search
+
+note:
+
+To be run on local server. No error checking code on db queries. No password on db connection.
 
 
 
